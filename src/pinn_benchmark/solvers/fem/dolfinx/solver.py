@@ -4,7 +4,7 @@ from time import time
 from dolfinx import fem, mesh
 from mpi4py import MPI
 from ufl import dx
-from test_cases.problem import Problem
+from pinn_benchmark.test_cases.problem import Problem
 
 
 def solve_dolfinx(problem: Problem, resolution=16):

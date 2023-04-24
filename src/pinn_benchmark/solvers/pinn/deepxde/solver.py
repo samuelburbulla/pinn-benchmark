@@ -1,4 +1,4 @@
-from test_cases.problem import Problem
+from pinn_benchmark.test_cases.problem import Problem
 from time import time
 import numpy as np
 import deepxde as dde
@@ -26,9 +26,10 @@ def solve_deepxde(problem: Problem, neurons_per_layer=10, quadrature_points=10):
     model = dde.Model(data, net)
     dde.optimizers.set_LBFGS_options(gtol=1e-5, ftol=1e-9, maxiter=100)
     model.compile("L-BFGS")
+    early_stopping = dde.callbacks.EarlyStopping(min_delta=1e-5)
 
     elapsed = -time()
-    model.train()
+    model.train(callbacks=[early_stopping])#, iterations=1_000_000)
     elapsed += time()
 
     n_error = 2*n

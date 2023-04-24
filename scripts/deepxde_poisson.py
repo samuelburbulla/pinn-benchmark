@@ -1,5 +1,5 @@
-from test_cases.poisson import PoissonProblem
-from solvers.pinn.deepxde.solver import solve_deepxde
+from pinn_benchmark.test_cases.poisson import PoissonProblem
+from pinn_benchmark.solvers.pinn.deepxde.solver import solve_deepxde
 
 poisson_problem = PoissonProblem(backend='torch')
 
