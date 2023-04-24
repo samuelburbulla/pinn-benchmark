@@ -27,7 +27,7 @@ class PoissonProblem(Problem):
         def source_term(x):
             f = 1
             for i in range(self.domain.dim):
-                f *= sin(pi * x[i])
+                f *= sin(4 * pi * x[i])
             return f
 
         # Define the exact solution
@@ -35,8 +35,8 @@ class PoissonProblem(Problem):
             sine = ufl.sin if self.backend == 'dolfinx' else np.sin
             u = 1
             for i in range(self.domain.dim):
-                u *= sine(pi * x[i])
-            u /= 2 * pi**2
+                u *= sine(4 * pi * x[i])
+            u /= 2 * 16 * pi**2
             return u
 
         # Initialize the parent class
@@ -60,7 +60,7 @@ class PoissonProblem(Problem):
             import deepxde as dde
             dy_xx = dde.grad.hessian(solution, x, i=0, j=0)
             dy_yy = dde.grad.hessian(solution, x, i=1, j=1)
-            f = sin(pi * x[:, 0:1]) * sin(pi * x[:, 1:2])
+            f = sin(4 * pi * x[:, 0:1]) * sin(4 * pi * x[:, 1:2])
             return - dy_xx - dy_yy - f
 
         else:
