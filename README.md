@@ -18,4 +18,4 @@ For Apple Silicon, use `conda install nomkl` before installing `pytorch`.
 ## Results
 
 #### Poisson equation on a unit square
-![poisson](https://github.com/appliedAI-Initiative/pinn-benchmark/blob/main/output/error_vs_wall_time_poisson.png?raw=true)
+![poisson](https://github.com/samuelburbulla/pinn-benchmark/blob/main/output/error_vs_wall_time_poisson.png?raw=true)
